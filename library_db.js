@@ -1,4 +1,6 @@
+
 const pgp = require('pg-promise')(/* options */)
+/*
 const db = pgp('postgres://postgres:Nallepuh9988@localhost:5432/dvdrental')
 
 async function selectAllCustomers() {
@@ -30,3 +32,4 @@ module.exports = {
     selectAllCities,
     insertCity
 }
+*/

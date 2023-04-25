@@ -1,0 +1,47 @@
+body {
+    overflow-x: hidden;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/*Navbar*/
+
+.my-nav {
+    margin: auto;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10vh;
+    border-bottom: solid black;
+    display: flex;
+    flex-direction: row;
+}
+
+.nav-header {
+    margin: auto;
+    margin-left: 10px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.nav-links li {
+    margin-right: 20px;
+}
+
+.nav-links li a {
+    color: rgb(10, 44, 41);
+    text-decoration: none;
+}
+
+.nav-links li a:hover {
+    text-decoration: 1px underline;
+}
+
+/*Page header*/
+.my-header {
+}
