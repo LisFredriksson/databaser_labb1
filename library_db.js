@@ -1,25 +1,24 @@
-
 const pgp = require('pg-promise')(/* options */)
-/*
-const db = pgp('postgres://postgres:Nallepuh9988@localhost:5432/dvdrental')
 
-async function selectAllCustomers() {
+const db = pgp('postgres://postgres:Nallepuh9988@localhost:5432/libraryDb')
 
-    let data = await db.many("SELECT * FROM customer")
+async function selectAllBooks() {
 
-    return data;
-}
-
-async function selectAllCities() {
-
-    let data = await db.many("SELECT * FROM city")
+    let data = await db.many("SELECT * FROM books")
 
     return data;
 }
 
-async function insertCity() {
+async function selectAllLoans() {
 
-    await db.none(`INSERT INTO city(city, country_id) VALUES(${name}, ${country_id})`)
+    let data = await db.many("SELECT * FROM loan")
+
+    return data;
+}
+
+async function insertBook() {
+
+    await db.none(`INSERT INTO books(book, book) VALUES(${title}, ${book})`)
         .catch((error) => {
             console.log('ERROR:', error)
         })
@@ -28,8 +27,7 @@ async function insertCity() {
 }
 
 module.exports = {
-    selectAllCustomers,
-    selectAllCities,
-    insertCity
+    selectAllBooks,
+    selectAllLoans,
+    insertBook
 }
-*/

@@ -2,12 +2,12 @@ body {
     overflow-x: hidden;
     box-sizing: border-box;
     text-align: center;
+    margin: 0;
 }
 
 /*Navbar*/
 
 .my-nav {
-    margin: auto;
     width: 100%;
     position: absolute;
     top: 0;
@@ -16,6 +16,7 @@ body {
     border-bottom: solid black;
     display: flex;
     flex-direction: row;
+    z-index: 999;
 }
 
 .nav-header {
@@ -44,4 +45,21 @@ body {
 
 /*Page header*/
 .my-header {
+}
+
+/*Hero image*/
+#hero-div {
+    margin-top: 10vh;
+    height: 90vh;
+    position: relative;
+    background-image: url(childedit.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    align-items: center;
+}
+
+#hero-header {
+    padding-top: 20vh;
 }

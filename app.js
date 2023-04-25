@@ -17,19 +17,17 @@ app.get('/', (req, res) => {
     res.render('home', { title: 'Home' })
 });
 
-app.get('/books', (req, res) => {
+const booksRouter = require('./routes/booksRouter');
+app.use('/books', booksRouter);
+
+app.get('/admin', (req, res) => {
     //res.send(<h1>ABOUT</h1>);
-    res.render('books', { title: 'Books' })
+    res.render('admin', { title: 'Admin' })
 });
 
-app.get('/books/borrow', (req, res) => {
-    //res.send(<h1>ABOUT</h1>);
-    res.render('borrow', { title: 'Borrow books' })
-});
+app.listen(3001);
 
 //404 page (must be at the bottom)
 app.use(() => {
     res.status(404).render('404', { title: '404' })
 })
-
-app.listen(3001);
