@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/LisFredriksson/databaser_labb1#readme",
   "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.9",
     "nodemon": "^2.0.22"
   }
 }
