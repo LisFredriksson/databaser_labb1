@@ -4,7 +4,7 @@ const db = pgp('postgres://postgres:Nallepuh9988@localhost:5432/libraryDb')
 
 async function selectAllBooks() {
 
-    let data = await db.many("SELECT * FROM books")
+    let data = await db.many("SELECT * FROM book")
 
     return data;
 }

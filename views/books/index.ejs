@@ -4,17 +4,20 @@
         <body>
             <%- include('../partials/nav.ejs') %>
             <h2 class="my-header">ALL BOOKS</h2>
+            <div class="books-container">
             <div class="book-div">
     <% if (data.length > 0) { %>
         <% data.forEach(data => { %>
+            <img src="<%= data.book.image %>" class="book-image">
             <h3 class="book-title"><%= data.book.title %></h3>
-            <p class="book-author"><%= data.book.author %></p>
-            <p class="book-author"><%= data.book.genre %></p>
+            <p class="book-details">Sidor: <%= data.book.pages %></p>
+            <p class="book-details">Rating: <%= data.book.rating %></p>
         </a>
         <% }) %>
     <% } else {%>
         <p>There are no books available in store...</p>
     <%}%>
+</div>
 </div>
         </body>
     </html >
