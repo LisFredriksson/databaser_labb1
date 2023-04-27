@@ -1,0 +1,20 @@
+<!DOCTYPE html >
+    <html lang="en">
+        <%- include('../partials/head.ejs') %>
+        <body>
+            <%- include('../partials/nav.ejs') %>
+            <h2 class="my-header">ALL BOOKS</h2>
+            <div class="book-div">
+    <% if (data.length > 0) { %>
+        <% data.forEach(data => { %>
+            <h3 class="book-title"><%= data.book.title %></h3>
+            <p class="book-author"><%= data.book.author %></p>
+            <p class="book-author"><%= data.book.genre %></p>
+        </a>
+        <% }) %>
+    <% } else {%>
+        <p>There are no books available in store...</p>
+    <%}%>
+</div>
+        </body>
+    </html >

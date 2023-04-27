@@ -63,3 +63,20 @@ body {
 #hero-header {
     padding-top: 20vh;
 }
+
+/*main header*/
+
+.my-header {
+    margin-top: 65px;
+}
+
+/*Book card*/
+
+.book-div {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30px;
+    height: 60vh;
+    width: 45vh;
+    border: solid black;
+}

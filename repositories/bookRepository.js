@@ -8,7 +8,7 @@ async function getAllBooks() {
     let data = await db_context.selectAllBooks()
 
     data.forEach(book => {
-        books.push(new bookModel(book.title))
+        books.push(new bookModel(book))
     });
 
     return books;
