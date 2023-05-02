@@ -8,6 +8,7 @@
             <div class="book-div">
     <% if (data.length > 0) { %>
         <% data.forEach(data => { %>
+        <a class="single" href="/books/<%= data.book.book_id %>">
             <img src="<%= data.book.image %>" class="book-image">
             <h3 class="book-title"><%= data.book.title %></h3>
             <p class="book-details">Sidor: <%= data.book.pages %></p>

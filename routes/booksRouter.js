@@ -6,7 +6,7 @@ router.get("/", async (req, res) => {
     controller.get(req, res)
 });
 
-router.get("/details", async (req, res) => {
+router.get("/:id", async (req, res) => {
     controller.getDetails(req, res)
 });
 

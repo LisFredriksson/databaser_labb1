@@ -5,5 +5,25 @@
     <%- include('./partials/nav.ejs') %>
 
     <h2 class="my-header">ADMIN PAGE</h2>
+
+<div class="form-div">
+    <h2 class="add-book-header">Lägg till bok</h2>
+    <form action="POST" class="add-book-form">
+        <label for="title">Titel:</label>
+        <input type="text" required placeholder="titel" id="title">
+        <label for="rating">Rating:</label>
+        <input type="number" required placeholder="rating" id="rating">
+        <label for="pages">Sidantal:</label>
+        <input type="pages" required placeholder="pages" id="pages">
+        <label for="release-date">Utgivningsdatum:</label>
+        <input type="date" placeholder="release date" id="release-date">
+        <label for="book-image">Namn på bildfil:</label>
+        <input type="text" id="book-image" required placeholder="images file name">
+        <label for="book-description">Beskrivning av handling:</label>
+        <textarea name="description" id="book-description" cols="30" rows="10" placeholder="description..."></textarea>
+        <button class="btn">ADD</button>
+    </form>
+</div>
+
 </body>
 </html>

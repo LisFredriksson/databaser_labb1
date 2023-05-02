@@ -9,6 +9,7 @@ async function selectAllBooks() {
     return data;
 }
 
+
 async function selectAllLoans() {
 
     let data = await db.many("SELECT * FROM loan")
@@ -29,5 +30,5 @@ async function insertBook() {
 module.exports = {
     selectAllBooks,
     selectAllLoans,
-    insertBook
+    insertBook,
 }

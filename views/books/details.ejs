@@ -1,12 +1,22 @@
-< !DOCTYPE html >
+<!DOCTYPE html >
     <html lang="en">
         <%- include('../partials/head.ejs') %>
         <body>
             <%- include('../partials/nav.ejs') %>
-            <div class="details-content">
-                <h2><%=book.title%></h2>
-                <p><%=book.body%></p>
-                <a data-doc="<%= book._id %>" class="delete">delete</a>
-            </div>
+            <h2 class="my-header">DETAILS</h2>
+            <div class="books-container">
+            <div class="book-div">
+        <% data.forEach(data => { %>
+            <% if (data.book.book_id === Number(id)) { %>
+            <img src="childedit.jpg">
+            <h3 class="book-title"><%= data.book.title %></h3>
+            <p class="book-details">Sidor: <%= data.book.pages %></p>
+            <p class="book-details">Rating: <%= data.book.rating %></p>
+            <p class="book-details">Rating: <%= data.book.description %></p>
+
+        <%}%>
+        <% }) %>
+</div>
+</div>
         </body>
     </html >
