@@ -9,6 +9,19 @@ async function selectAllBooks() {
     return data;
 }
 
+async function selectAllAuthors() {
+
+    let data = await db.many("SELECT * FROM author")
+
+    return data;
+}
+
+async function selectAllGenrers() {
+
+    let data = await db.many("SELECT * FROM genre")
+
+    return data;
+}
 
 async function selectAllLoans() {
 
@@ -17,9 +30,9 @@ async function selectAllLoans() {
     return data;
 }
 
-async function insertBook() {
+async function insertBook(title, description, relese_date, pages, rating, image) {
 
-    await db.none(`INSERT INTO books(book, book) VALUES(${title}, ${book})`)
+    let result = await db.none(`INSERT INTO book(title, description, relese_date, pages, rating, image) VALUES('${title}', '${description}', '${relese_date}', ${pages}, ${rating}, '${image}')`)
         .catch((error) => {
             console.log('ERROR:', error)
         })
@@ -31,4 +44,6 @@ module.exports = {
     selectAllBooks,
     selectAllLoans,
     insertBook,
+    selectAllAuthors,
+    selectAllGenrers
 }

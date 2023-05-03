@@ -8,16 +8,24 @@
             <div class="book-div">
     <% if (data.length > 0) { %>
         <% data.forEach(data => { %>
-        <a class="single" href="/books/<%= data.book.book_id %>">
-            <img src="<%= data.book.image %>" class="book-image">
-            <h3 class="book-title"><%= data.book.title %></h3>
-            <p class="book-details">Sidor: <%= data.book.pages %></p>
-            <p class="book-details">Rating: <%= data.book.rating %></p>
+        <a class="single-book-link" href="/books/<%= data.book_id %>">
+            <img src="<%= data.image %>" class="book-image">
+            <h3 class="book-title"><%= data.title %></h3>
+            <% author.forEach(author => { %>
+                <% if (data.author_id === author.author_id) { %>
+                <p class="book-details"><b><%= author.first_name %> <%= author.last_name %></b></p>
+        <%}%>
+        <% }) %>
+                <% genre.forEach(genre => { %>
+                    <% if (data.genre_id === genre.genre_id) { %>
+                    <p class="book-details">Genre: <%= genre.name %></p>
+            <%}%>
+            <% }) %>
+            <p class="book-details">Sidor: <%= data.pages %></p>
+            <p class="book-details">Rating: <%= data.rating %></p>
         </a>
         <% }) %>
-    <% } else {%>
-        <p>There are no books available in store...</p>
-    <%}%>
+    <% }%>
 </div>
 </div>
         </body>

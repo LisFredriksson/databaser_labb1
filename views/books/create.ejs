@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/nav.ejs') %>
+
+    <h2 class="my-header">ADMIN PAGE</h2>
+
+<div class="form-div">
+    <h2 class="add-book-header">Lägg till bok</h2>
+    <form action="http://localhost:3001/books" method="POST" class="add-book-form">
+        <label for="title">Titel:</label>
+        <input type="text" required placeholder="titel" id="title" name="title">
+        <label for="book-description">Beskrivning av handling:</label>
+        <textarea name="description" id="book-description" cols="30" rows="10" placeholder="description..."></textarea>
+        <label for="release-date">Utgivningsdatum:</label>
+        <input type="date" placeholder="release date" id="release-date" name="relese_date">
+        <label for="pages">Sidantal:</label>
+        <input type="number" placeholder="pages" id="pages" name="pages">
+        <label for="rating">Rating:</label>
+        <input type="number" min="0" max="5" step="0.0001" placeholder="rating" id="rating" name="rating">
+        <label for="book-image">Namn på bildfil:</label>
+        <input type="text" id="book-image" placeholder="images file name" name="image">
+        <button class="btn">ADD</button>
+    </form>
+</div>
+
+</body>
+</html>

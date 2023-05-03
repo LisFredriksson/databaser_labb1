@@ -91,29 +91,34 @@ body {
 .books-container {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    width: 100%;
 }
 
 .book-div {
     display: flex;
-    flex-direction: column;
-    margin-top: 30px;
-    width: 100px;
-    align-items: center;
+    flex-direction: row;
+    justify-content: center;
 }
 
 .book-image {
     width: 100px;
+    margin: 10px 20px 0 20px;
+}
+
+.single-book-link{
+    text-decoration: none;
+    color: black;
 }
 
 .book-title {
     margin-top: 2px;
-    margin-bottom: 0;
+    margin: 0 20px 0 20px;
+    width: 100px;
 }
 
 .book-details {
-    margin: 0;
+    margin: 0 20px 0 20px;
     margin-top: 2px;
 }
 
@@ -124,7 +129,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .add-book-form {
@@ -152,4 +156,43 @@ body {
     border: solid 2px black;
     padding: 2px 5px;
     text-align: center;
+}
+
+/*Book hero page*/
+
+.single-book-div {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
+    grid-template-areas:
+    ". image title ."
+    ". image details ."
+    ". description description .";
+}
+
+#image-div{
+    grid-area: image;
+}
+
+#title-div{
+    grid-area: title;
+}
+
+#description-div{
+    grid-area: description;
+    margin-top: 10px;
+}
+
+#details-div{
+    grid-area: details;
+}
+
+.single-book-image {
+    width: 150px;
+}
+
+
+.single-book-details {
+    margin: 0;
+    margin-top: 2px;
 }

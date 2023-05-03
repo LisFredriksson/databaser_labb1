@@ -8,19 +8,15 @@ async function getAllBooks() {
     let data = await db_context.selectAllBooks()
 
     data.forEach(book => {
-        books.push(new bookModel(book))
+        books.push(new bookModel(book.book_id, book.title, book.description, book.author_id, book.genre_id, book.relese_date, book.pages, book.rating, book.image))
     });
 
     return books;
 };
 
 
-async function addBook(title) {
-
-    //Vi hrådkodar 90 som är sverige
-    db_context.insertBook(title, 90)
-
-
+async function addBook(title, description, relese_date, pages, rating, image) {
+    db_context.insertBook(title, description, relese_date, pages, rating, image)
 };
 
 module.exports = {

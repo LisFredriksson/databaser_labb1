@@ -12,6 +12,8 @@ app.use(cors());
 app.use(morgan('dev'));
 
 
+app.listen(3001);
+
 app.get('/', (req, res) => {
     //res.send(<h1>ABOUT</h1>);
     res.render('home', { title: 'Home' })
@@ -20,14 +22,9 @@ app.get('/', (req, res) => {
 const booksRouter = require('./routes/booksRouter');
 app.use('/books', booksRouter);
 
-app.get('/admin', (req, res) => {
-    //res.send(<h1>ABOUT</h1>);
-    res.render('admin', { title: 'Admin' })
-});
 
-app.listen(3001);
 
 //404 page (must be at the bottom)
-app.use(() => {
+app.use((req, res) => {
     res.status(404).render('404', { title: '404' })
 })
