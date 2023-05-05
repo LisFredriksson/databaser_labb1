@@ -150,12 +150,28 @@ body {
     text-align: center;
 }
 
+.add-book-form select {
+    width: 150px;
+    border-radius: 8px;
+    border: solid 2px black;
+    padding: 2px;
+    text-align: center;
+}
+
 .add-book-form textarea {
     width: 200px;
     border-radius: 8px;
     border: solid 2px black;
     padding: 2px 5px;
     text-align: center;
+}
+
+#add-genre-form{
+    display: none;
+}
+
+#add-author-form{
+    display: none;
 }
 
 /*Book hero page*/

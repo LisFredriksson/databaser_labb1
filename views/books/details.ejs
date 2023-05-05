@@ -19,7 +19,7 @@
             <div id="details-div">
                 <% author.forEach(author => { %>
                     <% if (data.author_id === author.author_id) { %>
-                    <h3 class="book-details"><b><%= author.first_name %> <%= author.last_name %></b></h3>
+                    <h3 class="book-details"><b><%= author.name %></b></h3>
             <%}%>
             <% }) %>
                 <% genre.forEach(genre => { %>

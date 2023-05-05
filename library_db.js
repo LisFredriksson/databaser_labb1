@@ -30,9 +30,10 @@ async function selectAllLoans() {
     return data;
 }
 
-async function insertBook(title, description, relese_date, pages, rating, image) {
+async function insertBook(title, description, author_id, genre_id, relese_date, pages, rating, image) {
 
-    let result = await db.none(`INSERT INTO book(title, description, relese_date, pages, rating, image) VALUES('${title}', '${description}', '${relese_date}', ${pages}, ${rating}, '${image}')`)
+
+    let result = await db.none(`INSERT INTO book(title, description, author_id, genre_id, relese_date, pages, rating, image) VALUES('${title}', '${description}', '${author_id}', '${genre_id}', '${relese_date}', ${pages}, ${rating}, '${image}')`)
         .catch((error) => {
             console.log('ERROR:', error)
         })
@@ -40,10 +41,30 @@ async function insertBook(title, description, relese_date, pages, rating, image)
     return result;
 }
 
+async function insertAuthorShort(name) {
+    let result = await db.none(`INSERT INTO author(name) VALUES('${name}')`)
+        .catch((error) => {
+            console.log('ERROR:', error)
+        })
+
+    return result
+}
+
+async function insertGenre(name) {
+    let result = await db.none(`INSERT INTO genre(name) VALUES('${name}')`)
+        .catch((error) => {
+            console.log('ERROR:', error)
+        })
+
+    return result
+}
+
 module.exports = {
     selectAllBooks,
     selectAllLoans,
     insertBook,
     selectAllAuthors,
-    selectAllGenrers
+    selectAllGenrers,
+    insertAuthorShort,
+    insertGenre
 }

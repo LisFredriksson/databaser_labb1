@@ -9,11 +9,18 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
     controller.add(req, res)
-    console.log(req.body)
 });
 
 router.get("/create", async (req, res) => {
     controller.getCreate(req, res);
+});
+
+router.post("/addauthor", async (req, res) => {
+    controller.addAuthor(req, res);
+});
+
+router.post("/addgenre", async (req, res) => {
+    controller.addNewGenre(req, res);
 });
 
 router.get("/:id", async (req, res) => {

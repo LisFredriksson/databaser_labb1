@@ -15,8 +15,8 @@ async function getAllBooks() {
 };
 
 
-async function addBook(title, description, relese_date, pages, rating, image) {
-    db_context.insertBook(title, description, relese_date, pages, rating, image)
+async function addBook(title, description, author_id, genre_id, relese_date, pages, rating, image) {
+    db_context.insertBook(title, description, author_id, genre_id, relese_date, pages, rating, image)
 };
 
 module.exports = {

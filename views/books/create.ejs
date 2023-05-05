@@ -7,12 +7,30 @@
     <h2 class="my-header">ADMIN PAGE</h2>
 
 <div class="form-div">
-    <h2 class="add-book-header">Lägg till bok</h2>
     <form action="http://localhost:3001/books" method="POST" class="add-book-form">
+        <h2 class="add-book-header">Lägg till bok</h2>
         <label for="title">Titel:</label>
         <input type="text" required placeholder="titel" id="title" name="title">
         <label for="book-description">Beskrivning av handling:</label>
         <textarea name="description" id="book-description" cols="30" rows="10" placeholder="description..."></textarea>
+        <label for="author">Författare:</label>
+        <select id="authors" name="author_name">
+            <option value="" disabled selected>författarregister</option>
+        <% author.forEach(author => { %>
+                <option name="<%= author.name %>"><%= author.name %></option>
+        <% }) %>
+        </select>
+        <label for="no-author">Författare inte i register</label>
+        <input type="checkbox" id="no-author">
+        <label for="genre">Genre:</label>
+        <select id="genre" name="genre_name">
+            <option value="" disabled selected>genre</option>
+        <% genre.forEach(genre => { %>
+                <option name="<%= genre.name %>"><%= genre.name %></option>
+        <% }) %>
+        </select>
+        <label for="no-genre">Genre inte i register</label>
+        <input type="checkbox" id="no-genre">
         <label for="release-date">Utgivningsdatum:</label>
         <input type="date" placeholder="release date" id="release-date" name="relese_date">
         <label for="pages">Sidantal:</label>
@@ -23,7 +41,57 @@
         <input type="text" id="book-image" placeholder="images file name" name="image">
         <button class="btn">ADD</button>
     </form>
+    <form action="http://localhost:3001/books/addgenre" method="POST" id="add-genre-form">
+        <h2 class="add-book-header">Lägg till Genre</h2>
+        <label for="genreName">Namn:</label>
+        <input type="text" required placeholder="namn" id="genreName" name="genre_name">
+        <button class="btn" id="ad-genre-btn">ADD</button>
+    </form>
+    <form action="http://localhost:3001/books/addauthor" method="POST" id="add-author-form">
+        <h2 class="add-book-header">Lägg till Författare</h2>
+        <label for="authorName">Namn:</label>
+    <input type="text" required placeholder="namn" id="authorName" name="author_name">
+    <button id="ad-author-btn" class="btn">ADD</button>
+    </form>
 </div>
 
+
+<script>
+const authorForm = document.querySelector('#add-author-form')
+const genreForm = document.querySelector('#add-genre-form')
+const bookForm = document.querySelector('.add-book-form')
+const noAuthorCheckbox = document.querySelector('#no-author')
+const noGenreCheckbox = document.querySelector('#no-genre')
+const adAuthorBtn = document.querySelector('#ad-author-btn')
+
+noAuthorCheckbox.addEventListener('input', function(){
+    if(noAuthorCheckbox.checked == true) {
+        bookForm.style.display = 'none'
+        authorForm.style.display = 'inline-block'
+  } else if (noAuthorCheckbox.checked == false) {
+    authorForm.style.display = 'none'
+    bookForm.style.display = 'inline-block'
+  }
+})
+
+noGenreCheckbox.addEventListener('input', function(){
+    if(noGenreCheckbox.checked == true) {
+        bookForm.style.display = 'none'
+        genreForm.style.display = 'inline-block'
+  } else if (noGenreCheckbox.checked == false) {
+    genreForm.style.display = 'none'
+    bookForm.style.display = 'inline-block'
+  }
+})
+
+adAuthorBtn.addEventListener('click', function(){
+        genreForm.style.display = 'none'
+        bookForm.style.display = 'inline-block'
+        noAuthorCheckbox.checked == false
+})
+
+
+
+</script>
 </body>
 </html>
