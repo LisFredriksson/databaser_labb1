@@ -60,8 +60,6 @@ body {
 }
 
 /*Page header*/
-.my-header {
-}
 
 /*Hero image*/
 #hero-div {
@@ -104,6 +102,7 @@ body {
 .book-image {
     width: 100px;
     margin: 10px 20px 0 20px;
+    border: solid 1px black;
 }
 
 .single-book-link{
@@ -120,6 +119,7 @@ body {
 .book-details {
     margin: 0 20px 0 20px;
     margin-top: 2px;
+    width: 100px;
 }
 
 /*add book form*/
@@ -173,6 +173,51 @@ body {
 #add-author-form{
     display: none;
 }
+
+/*update book form*/
+
+.update-db-div {
+    border-top: solid 1px black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#update-book-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+}
+
+#update-book-form label {
+    margin-top: 10px;
+}
+
+#update-book-form input {
+    width: 150px;
+    border-radius: 8px;
+    border: solid 2px black;
+    padding: 2px;
+    text-align: center;
+}
+
+#update-book-form select {
+    width: 150px;
+    border-radius: 8px;
+    border: solid 2px black;
+    padding: 2px;
+    text-align: center;
+}
+
+#change-book-description {
+    width: 200px;
+    border-radius: 8px;
+    border: solid 2px black;
+    padding: 2px 5px;
+    text-align: center;
+}
+
 
 /*Book hero page*/
 

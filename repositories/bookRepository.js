@@ -16,10 +16,27 @@ async function getAllBooks() {
 
 
 async function addBook(title, description, author_id, genre_id, relese_date, pages, rating, image) {
+
     db_context.insertBook(title, description, author_id, genre_id, relese_date, pages, rating, image)
 };
 
+async function updateOneBook(title, description, author_id, genre_id, relese_date, pages, rating, image, book_id) {
+
+    db_context.updateBook(title, description, author_id, genre_id, relese_date, pages, rating, image, book_id)
+
+};
+
+async function deleteOneBook(book_id) {
+
+    db_context.deleteBook(book_id)
+
+};
+
+
+
 module.exports = {
     getAllBooks,
-    addBook
+    addBook,
+    updateOneBook,
+    deleteOneBook
 }

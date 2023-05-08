@@ -1,4 +1,4 @@
-const { getAllBooks, addBook } = require("../repositories/bookRepository");
+const { getAllBooks, addBook, updateOneBook, deleteOneBook } = require("../repositories/bookRepository");
 const { getAllGenrers, addGenre } = require("../repositories/genreRepository");
 const { getAllAuthors, addAuthorShort } = require("../repositories/authorRepository");
 
@@ -16,7 +16,16 @@ async function getCreate(req, res) {
     let genre = await getAllGenrers();
     let author = await getAllAuthors();
 
-    return res.render('books/create', { genre, author, title: 'ADMIN' });
+    return res.render('books/create', { genre, author, title: 'ADD BOOK' });
+}
+
+async function getChange(req, res) {
+    let genre = await getAllGenrers();
+    let author = await getAllAuthors();
+    let book = await getAllBooks();
+    let chosenBook = req.body.book_title
+
+    return res.render('books/change', { genre, author, book, chosenBook, title: 'UPDATE' });
 }
 
 async function addAuthor(req, res) {
@@ -59,17 +68,15 @@ async function add(req, res) {
     genre.forEach(genre => {
         if (genre.name === genreInput) {
             genreId = genre.genre_id
-        } else { genreId = '' }
+        }
     });
 
-
-    for (let i = 0; i < author.length; i++) {
-        if (author[i].name == authorInput) {
-            authorId = author[i].author_id
-        } else if (i == author.length - 1 && authorId == '') {
-            addAuthorShort(authorInput)
+    author.forEach(author => {
+        if (author.name === authorInput) {
+            authorId = author.author_id
         }
-    }
+    });
+
 
     addBook(req.body.title, req.body.description, authorId, genreId, req.body.relese_date, req.body.pages, req.body.rating, req.body.image)
 
@@ -77,11 +84,44 @@ async function add(req, res) {
 
 }
 
+async function update(req, res) {
+
+    let genre = await getAllGenrers();
+    let author = await getAllAuthors();
+    let authorInput = req.body.author
+    let genreInput = req.body.genre
+    let genreId = '';
+    let authorId = '';
+
+    genre.forEach(genre => {
+        if (genre.name === genreInput) {
+            genreId = genre.genre_id
+        }
+    });
+
+    author.forEach(author => {
+        if (author.name === authorInput) {
+            authorId = author.author_id
+        }
+    });
+
+    updateOneBook(req.body.title, req.body.description, authorId, genreId, req.body.relese_date, req.body.pages, req.body.rating, req.body.image, req.body.book_id)
+
+}
+
+async function deleted(req, res) {
+    deleteOneBook(req.body.book_id)
+}
+
+
 module.exports = {
     get,
     add,
     getDetails,
     getCreate,
+    getChange,
     addAuthor,
-    addNewGenre
+    addNewGenre,
+    update,
+    deleted
 }

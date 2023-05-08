@@ -8,6 +8,7 @@ app.set('view engine', 'ejs');
 //middlewere & static files
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(cors());
 app.use(morgan('dev'));
 
@@ -18,6 +19,7 @@ app.get('/', (req, res) => {
     //res.send(<h1>ABOUT</h1>);
     res.render('home', { title: 'Home' })
 });
+
 
 const booksRouter = require('./routes/booksRouter');
 app.use('/books', booksRouter);

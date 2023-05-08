@@ -19,16 +19,16 @@
             <div id="details-div">
                 <% author.forEach(author => { %>
                     <% if (data.author_id === author.author_id) { %>
-                    <h3 class="book-details"><b><%= author.name %></b></h3>
+                    <h3 class="single-book-details"><b><%= author.name %></b></h3>
             <%}%>
             <% }) %>
                 <% genre.forEach(genre => { %>
                     <% if (data.genre_id === genre.genre_id) { %>
-                    <p class="book-details">Genre: <%= genre.name %></p>
+                    <p class="single-book-details">Genre: <%= genre.name %></p>
             <%}%>
             <% }) %>
                 <p class="single-book-details">Sidor: <%= data.pages %></p>
-                <p class="single-book-details">Rating: <%= data.rating %></p>
+                <p class="single-book-details">Rating: <b><%= data.rating %></b></p>
             </div>
 
         <%}%>

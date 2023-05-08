@@ -41,6 +41,28 @@ async function insertBook(title, description, author_id, genre_id, relese_date, 
     return result;
 }
 
+async function updateBook(title, description, author_id, genre_id, relese_date, pages, rating, image, book_id) {
+
+
+    let result = await db.query(`UPDATE book SET title = '${title}', description = '${description}',author_id = '${author_id}', genre_id = '${genre_id}', relese_date = '${relese_date}', pages = ${pages}, rating = ${rating}, image = '${image}' WHERE book_id = '${book_id}'`)
+        .catch((error) => {
+            console.log('ERROR:', error)
+        })
+
+    return result;
+}
+
+async function deleteBook(book_id) {
+
+
+    let result = await db.query(`DELETE FROM book WHERE book_id = '${book_id}'`)
+        .catch((error) => {
+            console.log('ERROR:', error)
+        })
+
+    return result;
+}
+
 async function insertAuthorShort(name) {
     let result = await db.none(`INSERT INTO author(name) VALUES('${name}')`)
         .catch((error) => {
@@ -66,5 +88,7 @@ module.exports = {
     selectAllAuthors,
     selectAllGenrers,
     insertAuthorShort,
-    insertGenre
+    insertGenre,
+    updateBook,
+    deleteBook
 }

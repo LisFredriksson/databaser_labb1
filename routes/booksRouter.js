@@ -15,6 +15,29 @@ router.get("/create", async (req, res) => {
     controller.getCreate(req, res);
 });
 
+router.get("/change", async (req, res) => {
+    controller.getChange(req, res);
+});
+
+router.post("/change", async (req, res) => {
+    controller.getChange(req, res);
+});
+
+router.put("/change", async (req, res) => {
+    console.log('PUT request made')
+    console.log(req.body)
+    res.sendStatus(200)
+    controller.update(req, res);
+});
+
+router.delete("/change", async (req, res) => {
+    console.log('DELETE request made')
+    console.log(req.body)
+    res.sendStatus(200)
+    controller.deleted(req, res);
+});
+
+
 router.post("/addauthor", async (req, res) => {
     controller.addAuthor(req, res);
 });

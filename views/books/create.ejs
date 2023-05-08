@@ -4,16 +4,16 @@
 <body>
     <%- include('../partials/nav.ejs') %>
 
-    <h2 class="my-header">ADMIN PAGE</h2>
+    <h2 class="my-header">LÄGG TILL BOK</h2>
 
 <div class="form-div">
     <form action="http://localhost:3001/books" method="POST" class="add-book-form">
-        <h2 class="add-book-header">Lägg till bok</h2>
+        <h2 class="add-book-header">Lägg till ny bok</h2>
         <label for="title">Titel:</label>
         <input type="text" required placeholder="titel" id="title" name="title">
         <label for="book-description">Beskrivning av handling:</label>
         <textarea name="description" id="book-description" cols="30" rows="10" placeholder="description..."></textarea>
-        <label for="author">Författare:</label>
+        <label for="authors">Författare:</label>
         <select id="authors" name="author_name">
             <option value="" disabled selected>författarregister</option>
         <% author.forEach(author => { %>

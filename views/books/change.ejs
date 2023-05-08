@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+<body>
+    <%- include('../partials/nav.ejs') %>
+
+    <h2 class="my-header">REDIGERA/UPPDATERA/RADERA</h2>
+    <form action="http://localhost:3001/books/change" method="POST">
+        <label for="book-update">Välj bok:</label>
+        <select id="book-update" name="book_title">
+            <option value="" disabled selected>bokregister</option>
+        <% book.forEach(book => { %>
+                <option name="<%= book.title %>"><%= book.title %></option>
+        <% }) %>
+        </select>
+        <button class="btn">VÄLJ</button>
+    </form>
+
+    <div class="update-db-div">
+
+    <div id="update-book-form">
+            <% book.forEach(book => { %>
+                <% if (chosenBook === book.title) { %>
+                    <label for="update_book_id">Id:</label>
+                    <input type="text" id="update_book_id" value="<%= book.book_id %>" name="book_id">
+                    <label for="delete-check">Radera ID</label>
+                    <input type="checkbox" name="" id="delete-check">
+                    <button id="delete-btn" class="btn">RADERA</button>
+                    <p id="now-deleted-message"><b>RADERAD!</b></p>
+                    <label for="update-title">Titel:</label>
+                    <input type="text" id="update-title" value="<%= book.title %>" name="title">
+                    <label for="change-book-description">Beskrivning av handling:</label>
+                    <textarea name="description" id="change-book-description" cols="30" rows="10" placeholder="description..."><%= book.description %>"></textarea>
+                    <label for="author_name">Författare:</label>
+                    <select id="authors" name="author_name">
+                        <% author.forEach(author => { %>
+                            <% if (book.author_id === author.author_id) { %>
+                        <option value="<%= author.name %>" selected><%= author.name %></option>
+                        <%}%>
+                        <% }) %>
+                    <% author.forEach(author => { %>
+                            <option name="<%= author.name %>"><%= author.name %></option>
+                    <% }) %>
+                    </select>
+                    <label for="genres">Genre:</label>
+                    <select id="genres" name="genre_name">
+                        <% genre.forEach(genre => { %>
+                            <% if (book.genre_id === genre.genre_id) { %>
+                        <option value="<%= genre.name %>" selected><%= genre.name %></option>
+                        <%}%>
+                        <% }) %>
+                    <% genre.forEach(genre => { %>
+                            <option name="<%= genre.name %>"><%= genre.name %></option>
+                    <% }) %>
+                    </select>
+                    <label for="release-date">Utgivningsdatum:</label>
+                    <input type="date" placeholder="<%= book.relese_date %>" id="release-date" name="relese_date">
+                    <label for="page">Sidantal:</label>
+                    <input type="number" value="<%= book.pages %>" id="page" name="pages">
+                    <label for="rating">Rating:</label>
+                    <input type="number" min="0" max="5" step="0.0001" value="<%= book.rating %>" id="rating" name="rating">
+                    <label for="book-image">Namn på bildfil:</label>
+                    <input type="text" id="book-image" value="<%= book.image %>"  name="image">
+                    <button class="btn" id="update-book-btn">ÄNDRA</button>
+                    <p id="now-updated-message"><b>Uppdaterad!</b></p>
+                    <%}%>
+                    <% }) %>
+                </div>
+    </div>
+    <script>
+        const updateButton = document.querySelector('#update-book-btn');
+        const book_id = document.querySelector('#update_book_id');
+        const title = document.querySelector('#update-title');
+        const description = document.querySelector('#change-book-description');
+        const authors = document.querySelector('#authors');
+        const genres = document.querySelector('#genres');
+        const releaseDate = document.querySelector('#release-date');
+        const page = document.querySelector('#page');
+        const rating = document.querySelector('#rating');
+        const image = document.querySelector('#book-image');
+        const nowUpdate = document.querySelector('#now-updated-message');
+        const deleteBtn = document.querySelector('#delete-btn');
+        const deleteCheck = document.querySelector('#delete-check');
+        const nowDeleted = document.querySelector('#now-deleted-message');
+
+        nowUpdate.style.display = 'none'
+        deleteBtn.style.display = 'none'
+        nowDeleted.style.display = 'none'
+
+        deleteCheck.addEventListener('input', function(){
+    if(deleteCheck.checked == true) {
+        deleteBtn.style.display = 'inline-block'
+    } else if (deleteCheck.checked == false) {
+        deleteBtn.style.display = 'none'
+    }
+    })
+
+    deleteBtn.addEventListener('click', () => {
+            const options = {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    book_id: book_id.value
+                })
+            };
+            fetch('/books/change', options)
+            .then(response => console.log(response))
+            .catch(error => {
+                console.error(error)
+            });
+            nowDeleted.style.display = 'inline-block'
+        });
+
+        updateButton.addEventListener('click', () => {
+            const options = {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    title: title.value,
+                    description: description.value,
+                    author: authors.value,
+                    genre: genres.value,
+                    relese_date: releaseDate.value,
+                    pages: page.value,
+                    rating: rating.value,
+                    image: image.value,
+                    book_id: book_id.value
+                })
+            };
+            fetch('/books/change', options)
+            .then(response => console.log(response))
+            .catch(error => {
+                console.error(error)
+            });
+            nowUpdate.style.display = 'inline-block'
+        });
+
+    </script>
+</body>
+</html>
