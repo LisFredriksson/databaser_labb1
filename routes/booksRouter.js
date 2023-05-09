@@ -4,11 +4,14 @@ const controller = require('../controllers/bookControllers');
 
 router.get("/", async (req, res) => {
     controller.get(req, res)
-    console.log(req)
 });
 
 router.post("/", async (req, res) => {
     controller.add(req, res)
+});
+
+router.get("/chat", async (req, res) => {
+    controller.getChat(req, res)
 });
 
 router.get("/create", async (req, res) => {

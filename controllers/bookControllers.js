@@ -19,6 +19,12 @@ async function getCreate(req, res) {
     return res.render('books/create', { genre, author, title: 'ADD BOOK' });
 }
 
+async function getChat(req, res) {
+
+    return res.render('books/chat', { title: 'CHAT' });
+}
+
+
 async function getChange(req, res) {
     let genre = await getAllGenrers();
     let author = await getAllAuthors();
@@ -123,5 +129,6 @@ module.exports = {
     addAuthor,
     addNewGenre,
     update,
-    deleted
+    deleted,
+    getChat
 }

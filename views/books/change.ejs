@@ -23,14 +23,14 @@
                 <% if (chosenBook === book.title) { %>
                     <label for="update_book_id">Id:</label>
                     <input type="text" id="update_book_id" value="<%= book.book_id %>" name="book_id">
-                    <label for="delete-check">Radera ID</label>
+                    <label for="delete-check">Radera bok</label>
                     <input type="checkbox" name="" id="delete-check">
                     <button id="delete-btn" class="btn">RADERA</button>
                     <p id="now-deleted-message"><b>RADERAD!</b></p>
                     <label for="update-title">Titel:</label>
                     <input type="text" id="update-title" value="<%= book.title %>" name="title">
                     <label for="change-book-description">Beskrivning av handling:</label>
-                    <textarea name="description" id="change-book-description" cols="30" rows="10" placeholder="description..."><%= book.description %>"></textarea>
+                    <textarea name="description" id="change-book-description" cols="30" rows="10" placeholder="description..."><%= book.description %></textarea>
                     <label for="author_name">Författare:</label>
                     <select id="authors" name="author_name">
                         <% author.forEach(author => { %>

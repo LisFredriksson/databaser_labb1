@@ -5,10 +5,11 @@
             <%- include('../partials/nav.ejs') %>
             <h2 class="my-header">ALL BOOKS</h2>
             <div class="books-container">
-            <div class="book-div">
+
     <% if (data.length > 0) { %>
         <% data.forEach(data => { %>
         <a class="single-book-link" href="/books/<%= data.book_id %>">
+            <div class="book-div">
             <img src="<%= data.image %>" class="book-image">
             <h3 class="book-title"><%= data.title %></h3>
             <% author.forEach(author => { %>
@@ -23,10 +24,10 @@
             <% }) %>
             <p class="book-details">Sidor: <%= data.pages %></p>
             <p class="book-details">Rating: <%= data.rating %></p>
+        </div>
         </a>
         <% }) %>
     <% }%>
-</div>
 </div>
         </body>
     </html >
