@@ -1,6 +1,6 @@
-const { getAllBooks, addBook, updateOneBook, deleteOneBook } = require("../repositories/bookRepository");
+const { getAllBooks, addBook, updateOneBook, deleteOneBook, bookByKeyword } = require("../repositories/bookRepository");
 const { getAllGenrers, addGenre } = require("../repositories/genreRepository");
-const { getAllAuthors, addAuthorShort } = require("../repositories/authorRepository");
+const { getAllAuthors, addAuthorShort, authorByKeyword } = require("../repositories/authorRepository");
 
 
 async function get(req, res) {
@@ -10,6 +10,14 @@ async function get(req, res) {
     let author = await getAllAuthors();
 
     return res.render('books/index', { data, genre, author, title: 'ALL BOOKS' });
+}
+
+async function search(req, res) {
+    let genre = await getAllGenrers();
+    let book = await bookByKeyword(req.query.keyword);
+    let author = await authorByKeyword(req.query.keyword);
+
+    return res.render('home', { book, author, genre, title: 'ADD BOOK' })
 }
 
 async function getCreate(req, res) {
@@ -130,5 +138,6 @@ module.exports = {
     addNewGenre,
     update,
     deleted,
-    getChat
+    getChat,
+    search
 }

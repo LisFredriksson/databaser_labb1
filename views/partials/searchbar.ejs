@@ -1,0 +1,13 @@
+<h2 class="my-header">SÖK</h2>
+<form action="" id="search-form">
+    <input type="text" id="keyword" name="keyword">
+    <button class="btn" id="searchBtn">SÖK</button>
+    <ul id="search-result">
+        <% book.forEach(book => { %>
+            <a href="http://localhost:3001/books/<%= book.book_id %>"><li>Bok: <%= book.title %></li></a>
+    <% }) %>
+    <% author.forEach(author => { %>
+        <li>Förf. <%= author.name %></li>
+<% }) %>
+    </ul>
+</form>

@@ -81,6 +81,24 @@ async function insertGenre(name) {
     return result
 }
 
+async function getBookByKeyword(keyword) {
+    let result = await db.any(`SELECT * FROM book WHERE title LIKE '${keyword}%'`)
+        .catch((error) => {
+            console.log('ERROR:', error)
+        })
+
+    return result
+}
+
+async function getAuthorByKeyword(keyword) {
+    let result = await db.any(`SELECT * FROM author WHERE name LIKE '${keyword}%'`)
+        .catch((error) => {
+            console.log('ERROR:', error)
+        })
+
+    return result
+}
+
 module.exports = {
     selectAllBooks,
     selectAllLoans,
@@ -90,5 +108,7 @@ module.exports = {
     insertAuthorShort,
     insertGenre,
     updateBook,
-    deleteBook
+    deleteBook,
+    getBookByKeyword,
+    getAuthorByKeyword
 }

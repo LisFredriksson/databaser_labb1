@@ -32,11 +32,25 @@ async function deleteOneBook(book_id) {
 
 };
 
+async function bookByKeyword(keyword) {
+
+    let books = [];
+
+    let data = await db_context.getBookByKeyword(keyword)
+
+    data.forEach(book => {
+        books.push(new bookModel(book.book_id, book.title, book.description, book.author_id, book.genre_id, book.relese_date, book.pages, book.rating, book.image))
+    });
+
+    return books;
+};
+
 
 
 module.exports = {
     getAllBooks,
     addBook,
     updateOneBook,
-    deleteOneBook
+    deleteOneBook,
+    bookByKeyword
 }

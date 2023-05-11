@@ -47,7 +47,7 @@ btn.addEventListener('click', function () {
 socket.on('server message', (msg) => {
     feedback.innerHTML = `<p><b>${msg}</b></p>`
 
-    if(msg == 'Du är placerad i kö...') {
+    if(msg == 'Välkommen till väntrummet<br> Du är placerad i kö...') {
         btn.disabled = true;
         message.disabled = true;
         handle.disabled = true;

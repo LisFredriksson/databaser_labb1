@@ -19,7 +19,20 @@ async function addAuthorShort(name) {
     db_context.insertAuthorShort(name)
 };
 
+async function authorByKeyword(keyword) {
+    let authors = [];
+
+    let data = await db_context.getAuthorByKeyword(keyword)
+
+    data.forEach(author => {
+        authors.push(new bookModel(author.author_id, author.name, author.nationality, author.birth_date))
+    });
+
+    return authors;
+};
+
 module.exports = {
     getAllAuthors,
-    addAuthorShort
+    addAuthorShort,
+    authorByKeyword
 }

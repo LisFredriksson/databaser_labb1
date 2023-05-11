@@ -71,7 +71,9 @@ body {
     background-size: cover;
     background-position: center;
     color: white;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 #hero-header {
@@ -289,4 +291,54 @@ body {
 #chat-output {
     text-align: left;
     padding: 5px;
+}
+
+/*Sök*/
+
+
+#search-form {
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    'keyword btn'
+    'search-result .'
+    ;
+    overflow-y:auto;
+}
+
+#search-result{
+    background-color: white;
+    color: black;
+    width: 180px;
+    grid-area: search-result;
+    justify-self: right;
+    margin-top: 0;
+    border-radius: 8px;
+    text-align: left;
+}
+
+#search-result li{
+    list-style: none;
+    margin-top: 5px;
+    color: black;
+    font-weight: 600;
+}
+
+#keyword {
+    width: 200px;
+    height: 20px;
+    border-radius: 8px;
+    border: solid 2px black;
+    padding: 2px;
+    margin: auto 10px 0 auto;
+    display: grid;
+    grid-area: keyword;
+    justify-self: right;
+    align-items: center;
+}
+
+#searchBtn {
+    grid-area: btn;
+    margin-bottom: 0;
 }

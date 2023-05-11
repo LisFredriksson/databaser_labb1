@@ -15,9 +15,8 @@ app.use(cors());
 
 //Router
 
-app.get('/', (req, res) => {
-    res.render('home', { title: 'Home' })
-});
+const homeRouter = require('./routes/homeRouter');
+app.use('/', homeRouter);
 
 const booksRouter = require('./routes/booksRouter');
 app.use('/books', booksRouter);
