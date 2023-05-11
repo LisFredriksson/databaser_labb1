@@ -2,12 +2,12 @@
 <form action="" id="search-form">
     <input type="text" id="keyword" name="keyword">
     <button class="btn" id="searchBtn">SÖK</button>
-    <% author.forEach(author => { %>
+
     <% book.forEach(book => {%>
     <ul id="search-result">
             <a href="http://localhost:3001/books/<%= book.book_id %>"><li>Bok: <%= book.title %>
                     </li></a><% }) %>
-
+                    <% author.forEach(author => { %>
 
         <li>Förf. <%= author.name %></li>
         <% }) %>
