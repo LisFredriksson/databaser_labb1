@@ -34,6 +34,14 @@
         <% }) %>
     </div>
 
+    <div id="toplist">
+        <% book.forEach(book => { %>
+            <!--<% book.sort(function(a,b){return a.rating-b.rating}) %>-->
+            <li><%= book.title %>: <%= book.rating %></li>
+            <% }) %>
+        </div>
+
+    <%- include('./partials/footer.ejs') %>
 
     <script>
 const searchForm = document.querySelector('#searchForm');
